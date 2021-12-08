@@ -5,7 +5,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import App from './components/App';
 import WithNavigate from "./components/Login/Login";
 import RegWithNavigate from "./components/Register/Register";
-import User from "./components/User/User";
+import DataWithNav from "./components/User/User";
 import * as serviceWorker from './serviceWorker';
 import "./index.css";
 
@@ -15,7 +15,7 @@ ReactDOM.render(
 			<Route path="/" element={<App />}/>
 			<Route path="login" element={<WithNavigate />}/>
 			<Route path="register" element={<RegWithNavigate />}/>
-			<Route path="user" element={<User />}/>
+			<Route path="user" element={<DataWithNav />}/>
 		</Routes>
 	</BrowserRouter>, 
 	document.getElementById('root')

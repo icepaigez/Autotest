@@ -17,7 +17,7 @@ class Login extends Component {
 	onEmailChange = e => {
 		this.setState({
 			email: e.target.value
-		})
+		}) 
 	}
 
 	onPasswordChange = e => {
@@ -38,7 +38,11 @@ class Login extends Component {
 			email:"",
 			password:""
 		})
-		this.props.navigate('/user')
+		this.props.navigate('/user', {
+			state: {
+				user: email
+			}
+		})
 	}
 
 	handleClick = () => {

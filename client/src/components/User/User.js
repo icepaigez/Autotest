@@ -7,12 +7,41 @@ class User extends Component {
 	constructor() {
 		super()
 		this.state = {
-			user:""
+			user:"",
+			texta:"",
+			textb:"",
+			textc:""
 		}
 	}
 
-	getText = e => {
-		console.log(e.target.value)
+	getTexta = e => {
+		this.setState({
+			texta: e.target.value
+		}, () => {
+			window._cio.track("click action", {
+				"item_clicked" : `${this.state.texta} Button`
+			})
+		})
+	}
+
+	getTextb = e => {
+		this.setState({
+			textb: e.target.value
+		}, () => {
+			window._cio.track("click action", {
+				"item_clicked" : `${this.state.textb} Button`
+			})
+		})
+	}
+
+	getTextc = e => {
+		this.setState({
+			textc: e.target.value
+		}, () => {
+			window._cio.track("click action", {
+				"item_clicked" : `${this.state.textc} Button`
+			})
+		})
 	}
 
 	componentDidMount() {
@@ -36,14 +65,9 @@ class User extends Component {
 		            <Link to="/">Logout</Link>
 		          </div>
 		        </nav>
-		        <button onClick={this.getText} value="Primary" type="button" className="btn btn-primary">Primary</button>
-				<button onClick={this.getText} type="button" value="Secondary" className="btn btn-secondary">Secondary</button>
-				<button onClick={this.getText} type="button" value="Success" className="btn btn-success">Success</button>
-				<button onClick={this.getText} type="button" value="Danger" className="btn btn-danger">Danger</button>
-				<button onClick={this.getText} type="button" value="Warning" className="btn btn-warning">Warning</button>
-				<button onClick={this.getText} type="button" value="Info" className="btn btn-info">Info</button>
-				<button onClick={this.getText} type="button" value="Light" className="btn btn-light">Light</button>
-				<button onClick={this.getText} type="button" value="Dark" className="btn btn-dark">Dark</button>
+		        <button onClick={this.getTexta} value="Primary" type="button" className="btn btn-primary">Primary</button>
+				<button onClick={this.getTextb} type="button" value="Secondary" className="btn btn-secondary">Secondary</button>
+				<button onClick={this.getTextc} type="button" value="Success" className="btn btn-success">Success</button>
 		      </div>
 		)
 	}

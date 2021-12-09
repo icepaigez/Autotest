@@ -9,15 +9,22 @@ class Register extends Component {
 	constructor() {
 		super()
 		this.state = {
-			name:"",
+			first_name:"",
+			last_name:"",
 			email:"",
 			password:""
 		}
 	}
 
-	onNameChange = e => {
+	onFirstNameChange = e => {
 		this.setState({
-			name: e.target.value
+			first_name: e.target.value
+		})
+	}
+
+	onLastNameChange = e => {
+		this.setState({
+			last_name: e.target.value
 		})
 	}
 
@@ -35,18 +42,20 @@ class Register extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		const { name, email } = this.state;
-		//used to create a new person in the workspace
+		const { first_name, last_name, email } = this.state;
+		//used to create a new person in the workspace using the JS snippet
 		window._cio.identify({
 			id: email,
-			name,
+			first_name, last_name,
 			created_at: Date.now()
 		})
 		this.setState({
-			name:"",
+			first_name:"",
+			last_name:"",
 			email:"",
 			password:""
 		})
+		this.props.navigate('/user');
 	}
 
 	handleClick = () => {
@@ -54,19 +63,28 @@ class Register extends Component {
 	}
 
 	render() {
-		const { name, email, password } = this.state;
-		const enabled = email.length > 0 && password.length > 0 && name.length > 0;
+		const { first_name, last_name, email, password } = this.state;
+		const enabled = email.length > 0 && password.length > 0 && first_name.length > 0 && last_name.length > 0;
 		return(
 			<div className="register">
 			  <h1>Register</h1>	
 		      <Form onSubmit={this.handleSubmit}>
-		      	<Form.Group size="lg" controlId="name">
-		          <Form.Label>Name</Form.Label>
+		      	<Form.Group size="lg" controlId="first_name">
+		          <Form.Label>First Name</Form.Label>
 		          <Form.Control
 		            autoFocus
 		            type="text"
-		            value={name}
-		            onChange={this.onNameChange}
+		            value={first_name}
+		            onChange={this.onFirstNameChange}
+		          />
+		        </Form.Group>
+		        <Form.Group size="lg" controlId="last_name">
+		          <Form.Label>Last Name</Form.Label>
+		          <Form.Control
+		            autoFocus
+		            type="text"
+		            value={last_name}
+		            onChange={this.onLastNameChange}
 		          />
 		        </Form.Group>
 		        <Form.Group size="lg" controlId="email">

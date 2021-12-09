@@ -2,6 +2,7 @@
   "name": "Customer.io",
   "version": "1.0.0",
   "description": "Customer.IO API Client Integration",
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",

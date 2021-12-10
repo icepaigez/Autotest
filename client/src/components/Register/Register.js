@@ -47,7 +47,7 @@ class Register extends Component {
 		window._cio.identify({
 			id: email,
 			first_name, last_name,
-			created_at: Date.now()
+			created_at: Math.round(+new Date()/1000)
 		})
 		this.setState({
 			first_name:"",
@@ -55,7 +55,11 @@ class Register extends Component {
 			email:"",
 			password:""
 		})
-		this.props.navigate('/user');
+		this.props.navigate('/user', {
+			state: {
+				user: email
+			}
+		});
 	}
 
 	handleClick = () => {

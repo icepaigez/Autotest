@@ -14,6 +14,10 @@ class User extends Component {
 		}
 	}
 
+	doAction = value => {
+		window.alert(`${value} button clicked!`)
+	}
+
 	getTexta = e => {
 		this.setState({
 			texta: e.target.value
@@ -21,6 +25,7 @@ class User extends Component {
 			window._cio.track("click action", {
 				"item_clicked" : `${this.state.texta} Button`
 			})
+			this.doAction(this.state.texta)
 		})
 	}
 
@@ -31,6 +36,7 @@ class User extends Component {
 			window._cio.track("click action", {
 				"item_clicked" : `${this.state.textb} Button`
 			})
+			this.doAction(this.state.textb)
 		})
 	}
 
@@ -41,6 +47,7 @@ class User extends Component {
 			window._cio.track("click action", {
 				"item_clicked" : `${this.state.textc} Button`
 			})
+			this.doAction(this.state.textc)
 		})
 	}
 

@@ -31,8 +31,8 @@ class Login extends Component {
 		const { email } = this.state;
 		//to identify an existing person in the workspace and update attributes
 		window._cio.identify({
-			id: email,
-			created_at: Date.now()
+			id: email, 
+			created_at: Math.round(+new Date()/1000)
 		})
 		this.setState({
 			email:"",
